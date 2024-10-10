@@ -1,5 +1,5 @@
 # theory-project1
-Knapsack Problem
+Knapsack Problem\n
 Team Members:
 - Ignacio Sadurni
 - Michael Sorenson
