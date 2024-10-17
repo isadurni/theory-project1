@@ -37,7 +37,7 @@ def main():
     if result:
         print(f"{result}")
     else:
-        print("No solution found with available coins.")
+        print("No possible combination.")
     
 if __name__ == '__main__':
     main()
