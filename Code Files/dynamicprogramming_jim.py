@@ -33,8 +33,9 @@ def main():
     target = int(sys.stdin.readline().rstrip())
     jar = [int(n) for n in sys.stdin.readline().rstrip().split(', ')]
     result = gen_solution(jar, target)
+    print(f"Target: {target}")
     if result:
-        print(f"Solution found: {result}")
+        print(f"{result}")
     else:
         print("No solution found with available coins.")
     
