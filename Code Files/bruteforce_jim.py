@@ -21,7 +21,7 @@ def main():
     print(f'Target: {target}')
     gen = gen_subsets(jar, [], 0, target)
     
-    found = False  # Flag to track if any subset is found
+    found = False  
     for result in gen:
         found = True
         if min_subset is None or len(result) < len(min_subset):
