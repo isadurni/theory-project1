@@ -4,22 +4,20 @@ from typing import List, Optional
 from collections import Counter
 import sys
 
-# Dynamic programming solution
 def gen_solution(jar: List[int], target: int) -> Optional[List[int]]:
     coins = set(jar)
     jar.sort()
-    coin_count = Counter(jar)  # Keeps track of available coins
+    coin_count = Counter(jar)
     table = [None] * (target + 1)
     table[0] = []
 
-    # We use a separate coin count for each table entry to track usage
     coin_usage = [Counter() for _ in range(target + 1)]
 
     for i in range(target + 1):
-        if table[i] is not None:  # If we can make value `i`
+        if table[i] is not None:
             for coin in coins:
-                if i + coin <= target:  # Check within bounds
-                    if coin_usage[i][coin] < coin_count[coin]:  # Check if we have enough of this coin
+                if i + coin <= target:
+                    if coin_usage[i][coin] < coin_count[coin]:
                         new_combo = table[i] + [coin]
 
                         if table[i + coin] is None or len(table[i + coin]) > len(new_combo):
