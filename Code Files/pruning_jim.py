@@ -4,14 +4,13 @@ from typing import List, Generator, Optional
 import random
 import sys
 
-# Pruning to stop recursion early if sum exceeds target
 def gen_subsets(jar: List[int], subset: List[Optional[int]], ind: int, target: int) -> Generator:
     if ind == len(jar):
         if sum(subset) == target:
             yield subset
         return
     
-    elif sum(subset) > target:  # Prune if the subset exceeds the target
+    elif sum(subset) > target:
         return
             
     else:
@@ -26,7 +25,7 @@ def main():
     
     gen = gen_subsets(jar, [], 0, target)
     
-    found = False  # Flag to track if a valid subset is found
+    found = False
     for result in gen:
         found = True
         if min_subset is None or len(result) < len(min_subset):
