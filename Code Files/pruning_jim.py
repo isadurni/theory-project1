@@ -18,16 +18,19 @@ def gen_subsets(jar: List[int], subset: List[Optional[int]], ind: int, target: i
         yield from gen_subsets(jar, subset + [jar[ind]], ind + 1, target)
 
 def main():
+    # Read from input
     target = int(sys.stdin.readline().rstrip())
     jar = [int(n) for n in sys.stdin.readline().rstrip().split(', ')]
     min_subset = None
     print(f'Target: {target}')
-    
     gen = gen_subsets(jar, [], 0, target)
-    
-    found = False
+
+    # Flag to check if any coin combination has been found
+    found = False  
+    # Loop through each subset
     for result in gen:
         found = True
+        # Update if it' the first combination or smaller than the previous combination
         if min_subset is None or len(result) < len(min_subset):
             min_subset = result
     
