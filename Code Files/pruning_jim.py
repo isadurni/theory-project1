@@ -20,7 +20,7 @@ def gen_subsets(jar: List[int], subset: List[Optional[int]], ind: int, target: i
 def main():
     target = int(sys.stdin.readline().rstrip())
     jar = [int(n) for n in sys.stdin.readline().rstrip().split(', ')]
-    min_subset = None  # Initialize to None to track the smallest valid subset
+    min_subset = None
     print(f'Target: {target}')
     
     gen = gen_subsets(jar, [], 0, target)
@@ -29,7 +29,7 @@ def main():
     for result in gen:
         found = True
         if min_subset is None or len(result) < len(min_subset):
-            min_subset = result  # Keep track of the smallest valid subset
+            min_subset = result
     
     if not found:
         print('No possible combination.')
