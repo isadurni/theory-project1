@@ -4,19 +4,24 @@ from typing import List, Generator, Optional
 import random
 import sys
 
+# Generates subsets of 'jar' and checks if their sum equals the target
 def gen_subsets(jar: List[int], subset: List[Optional[int]], ind: int, target: int) -> Generator:
+    # Base case
     if ind == len(jar):
         if sum(subset) == target:
             yield subset
         return
-    
+
+    # Check that can potentially prune off unecessary branches to avoid unecessary calculations
     elif sum(subset) > target:
         return
             
     else:
-        yield from gen_subsets(jar, subset, ind + 1, target)
-        yield from gen_subsets(jar, subset + [jar[ind]], ind + 1, target)
-
+        # Recursive call
+        yield from gen_subsets(jar, subset, ind+1, target)
+        # Recursive call with current element included
+        yield from gen_subsets(jar, subset + [jar[ind]], ind+1, target)
+    
 def main():
     # Read from input
     target = int(sys.stdin.readline().rstrip())
